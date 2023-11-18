@@ -94,7 +94,7 @@ export default function Dashboard() {
   async function statusHandler(status: string, leadId: string) {
     try {
       const statusrequest = await fetch(
-        `http://localhost:9000/api/update-status/${leadId}`,
+        `https://zyle-backend.vercel.app/api/update-status/${leadId}`,
         {
           method: "PATCH",
           body: JSON.stringify({ status }),
@@ -133,7 +133,7 @@ export default function Dashboard() {
     try {
       setIsDeleting(true);
       const res = await axios.delete(
-        `http://localhost:9000/api/delete-lead/${lead._id}`,
+        `https://zyle-backend.vercel.app/api/delete-lead/${lead._id}`,
         {
           headers: {
             "Content-Type": "application/json",

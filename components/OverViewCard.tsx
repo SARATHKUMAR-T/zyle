@@ -10,8 +10,6 @@ import {
 } from "lucide-react";
 
 export default function OverViewCard({ allLeads }: { allLeads: any }) {
-  console.log(allLeads);
-
   const activeCustomers = allLeads?.filter(
     (item: any) => item.status === "active"
   );

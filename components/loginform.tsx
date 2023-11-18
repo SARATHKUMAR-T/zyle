@@ -46,7 +46,7 @@ export default function Loginform() {
   // form submission function
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    const res = await fetch("http://localhost:9000/api/login", {
+    const res = await fetch("https://zyle-backend.vercel.app/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export default function Loginform() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 max-w-sm"
+          className="space-y-6 max-w-sm text-black"
         >
           <FormField
             control={form.control}
@@ -106,7 +106,11 @@ export default function Loginform() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="Your Email" {...field} />
+                  <Input
+                    className="text-white placeholder:text-white"
+                    placeholder="Your Email"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -119,6 +123,7 @@ export default function Loginform() {
               <FormItem>
                 <FormControl>
                   <Input
+                    className="text-white placeholder:text-white"
                     type="password"
                     placeholder="Your Password"
                     {...field}

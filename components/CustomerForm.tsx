@@ -79,11 +79,14 @@ export default function CustomerForm({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:9000/api/upload-lead", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers,
-      });
+      const res = await fetch(
+        "https://zyle-backend.vercel.app/api/upload-lead",
+        {
+          method: "POST",
+          body: JSON.stringify(values),
+          headers,
+        }
+      );
       const final = await res.json();
 
       if ((final.message = "Lead uploaded successfully")) {

@@ -118,11 +118,15 @@ function MailerForm({ lead, setMailModal }: { lead: any; setMailModal: any }) {
         file: { name: userFiles?.name, url: userFiles?.url },
       };
 
-      const req = await axios.post("http://localhost:9000/api/mail", datas, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const req = await axios.post(
+        "https://zyle-backend.vercel.app/api/mail",
+        datas,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (req.data.message === "Email sent successfully") {
         setIsLoading(false);
