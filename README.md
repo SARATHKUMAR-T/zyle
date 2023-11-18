@@ -87,6 +87,7 @@ Welcome to the Zyle Application documentation.
 - Onclick on the email will open the form to send mails to the respective clients.
   ![Imgur](https://i.imgur.com/pr8ng1N.png)
 - With or Without the mail canbe send.
+##IMPORTANT-only one files is allowed per mail and anyfile type canbe send maxsize of 64mb
   ![Imgur](https://i.imgur.com/pqFDxSy.png)
 
 ## Deployment<a name="deployment"></a>
