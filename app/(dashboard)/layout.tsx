@@ -1,10 +1,84 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { ChevronLeftCircleIcon, Menu } from "lucide-react";
+import {
+  Bell,
+  ChevronLeftCircleIcon,
+  FolderKanban,
+  GanttChartSquare,
+  Home,
+  Layers3,
+  ListChecks,
+  Menu,
+  MessageSquare,
+  PieChart,
+  Power,
+  Settings2,
+  UserCircle2,
+} from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+
+const links = [
+  {
+    label: "Home",
+    icon: <Home />,
+    href: "#",
+  },
+  {
+    label: "Dashboard",
+    icon: <GanttChartSquare />,
+    href: "/",
+  },
+  {
+    label: "Projects",
+    icon: <Layers3 />,
+    href: "#",
+  },
+  {
+    label: "Tasks",
+    icon: <ListChecks />,
+    href: "#",
+  },
+  {
+    label: "Reporting",
+    icon: <PieChart />,
+    href: "#",
+  },
+  {
+    label: "Users",
+    icon: <UserCircle2 />,
+    href: "#",
+  },
+];
+
+const link2 = [
+  {
+    label: "Notifications",
+    icon: <Bell />,
+    href: "#",
+  },
+  {
+    label: "Support",
+    icon: <MessageSquare />,
+    href: "#",
+  },
+
+  {
+    label: "Settings",
+    icon: <Settings2 />,
+    href: "#",
+  },
+];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [asideOpen, setAsideOpen] = useState(true);
+  const router = useRouter();
+
+  function logOutHandler() {
+    localStorage.getItem("token") && localStorage.removeItem("token");
+    router.push("/");
+  }
 
   return (
     <div
@@ -14,14 +88,62 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     >
       {/* sidebar */}
       {asideOpen && (
-        <div className=" max-h-[100vh] h-full border-r-2 flex flex-col gap-2 items-center  p-4">
-          <h4 className="text-lg font-semibold tracking-wide capitalize">
-            Zyle
-          </h4>
+        <div className=" max-h-[100vh] h-full border-r-2 flex flex-col justify-between gap-2 items-center  p-4">
+          <div className="flex w-full flex-col gap-3">
+            <Button
+              variant="ghost"
+              className="text-lg mb-8 font-semibold tracking-wide capitalize"
+              onClick={logOutHandler}
+            >
+              Zyle
+            </Button>
+
+            {links.map((item, i) => (
+              <Button
+                key={i}
+                variant="ghost"
+                className="w-full mx-auto flex justify-start hover:bg-gray-200 dark:hover:bg-gray-800 "
+                asChild
+              >
+                <Link
+                  href="/dashboard"
+                  className="flex  justify-start max-w-full gap-4 items-center"
+                >
+                  <p className="block">{item.icon}</p>
+                  <p className="block">{item.label}</p>
+                </Link>
+              </Button>
+            ))}
+          </div>
+
+          <div className="flex w-full flex-col gap-3">
+            {link2.map((item, i) => (
+              <Button
+                key={i}
+                variant="ghost"
+                className="w-full mx-auto flex justify-start hover:bg-gray-200 dark:hover:bg-gray-800 "
+                asChild
+              >
+                <Link
+                  href="/dashboard"
+                  className="flex  justify-start max-w-full gap-4 items-center"
+                >
+                  <p className="block">{item.icon}</p>
+                  <p className="block">{item.label}</p>
+                </Link>
+              </Button>
+            ))}
+            <Button
+              onClick={logOutHandler}
+              className="rounded-full w-14 mx-auto "
+            >
+              <Power />
+            </Button>
+          </div>
         </div>
       )}
-      {/* main section pdf viweport */}
-      <div className="h-full relative w-full max-w-full min-h-screen max-h-[100vh] overflow-y-scroll p-4">
+      {/* main section viweport */}
+      <div className=" relative w-full max-w-full h-screen max-h-[100vh]  p-4">
         {children}
       </div>
     </div>
