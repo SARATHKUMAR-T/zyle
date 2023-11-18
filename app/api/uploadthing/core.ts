@@ -6,8 +6,6 @@ export const ourFileRouter = {
   imageUploader: f({ blob: { maxFileSize: "64MB" } }).onUploadComplete(
     async ({ file }) => {
       console.log("Upload complete");
-
-      return { file };
     }
   ),
 } satisfies FileRouter;
