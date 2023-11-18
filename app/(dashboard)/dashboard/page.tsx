@@ -75,14 +75,14 @@ export default function Dashboard() {
     checkToken();
   }, [router]);
 
-  const token = localStorage.getItem("token");
-  const headers: HeadersInit = {
-    "Content-Type": "application/json",
-  };
+  // const token = localStorage.getItem("token");
+  // const headers: HeadersInit = {
+  //   "Content-Type": "application/json",
+  // };
 
-  if (token) {
-    headers["x-auth-token"] = token;
-  }
+  // if (token) {
+  //   headers["x-auth-token"] = token;
+  // }
   // fetching data from the server
   const { data, isLoading } = useQuery({
     queryKey: ["getLeads"],
@@ -93,27 +93,28 @@ export default function Dashboard() {
   // Status handler function
   async function statusHandler(status: string, leadId: string) {
     try {
-      const statusrequest = await fetch(
+      const result = await axios.patch(
         `https://zyle-backend.vercel.app/api/update-status/${leadId}`,
+        { status },
         {
-          method: "PATCH",
-          body: JSON.stringify({ status }),
-          headers,
+          headers: {
+            "Content-Type": "application/json",
+            "x-auth-token": localStorage.getItem("token"),
+          },
         }
       );
-      const result = await statusrequest.json();
 
-      if (result.message === "Status Updated Successfully") {
+      if (result.data.message === "Status Updated Successfully") {
         toast({
-          title: result.message,
+          title: result.data.message,
           duration: 2000,
         });
         queryClient.invalidateQueries({
           queryKey: ["getLeads"],
         });
-      } else if (result.message === "Unbale to Update Status") {
+      } else if (result.data.message === "Unbale to Update Status") {
         toast({
-          title: result.message,
+          title: result.data.message,
           duration: 2000,
           variant: "destructive",
         });
