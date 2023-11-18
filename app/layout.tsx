@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { ThemeProvider } from "@/components/theme-provider";
 import QueryProvider from "@/components/query-provider";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
@@ -23,19 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <QueryProvider>
-            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+        <QueryProvider>
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
 
-            {children}
-          </QueryProvider>
-          <Toaster />
-        </ThemeProvider>
+          {children}
+        </QueryProvider>
+        <Toaster />
       </body>
     </html>
   );
