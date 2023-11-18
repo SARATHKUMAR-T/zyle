@@ -29,6 +29,10 @@ interface UserFile {
   url: string;
 }
 
+interface UploadFileResponse {
+  name: string;
+  url: string;
+}
 // form schema for contact
 const formSchema = z.object({
   mailTo: z.string().email({
@@ -72,14 +76,16 @@ function MailerForm({ lead, setMailModal }: { lead: any; setMailModal: any }) {
     "imageUploader",
     {
       onClientUploadComplete: file => {
-        const { name, url } = file[0];
-        setUserFiles({ name, url });
-        setFiles([]);
-        toast({
-          title: "Upload Completed Successfully",
-          description: "Now You Can Send Email 📧",
-          duration: 2000,
-        });
+        if (file?.length !== undefined) {
+          const { name, url } = file[0];
+          setUserFiles({ name, url });
+          setFiles([]);
+          toast({
+            title: "Upload Completed Successfully",
+            description: "Now You Can Send Email 📧",
+            duration: 2000,
+          });
+        }
       },
       onUploadError: () => {
         toast({
