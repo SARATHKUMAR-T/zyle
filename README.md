@@ -74,21 +74,20 @@ Welcome to the Zyle Application documentation.
 ## New gen CRM<a name="newgen-crm"></a>
 
 -Landing page
-![landing page img](https://i.imgur.com/P69UxMU.png)
-- User can user their email credentials to create a account.
-- Feel free to use demo account if you need.
-  ![login page img](https://i.imgur.com/4auZDCv.png)
-- After successful login users can upload theri files to cloud.
-  ![home page](https://i.imgur.com/CT24ijJ.png)
-- on successfull updation the file will showed in file manager page.
-  ![loader](https://i.imgur.com/mwjnxmc.png)
-- user can select file and edit by clicking the edit button.
-  ![file manager](https://i.imgur.com/pAkwlZc.png)
-- user willbe redirected to edit page.User can select pages they want to keep.
-- Navigation button is provided in the Top navigation bar.
-  ![editor](https://i.imgur.com/ULpnE5r.png)
-- After selecting pages the download button will appear and by clicking the download button file will download automatically.
-  ![download button](https://i.imgur.com/isrU4GC.png)
+![landing page img](https://i.imgur.com/VRPTslW.png)
+- login with admin email and password
+- After successful login admin can add leads.
+  ![uploadForm](https://i.imgur.com/AnrXVLy.png)
+- on successfull updation the leads willbe showed.
+  ![homepage](https://i.imgur.com/sG3dBdS.png)
+- admin can select file and delete by clicking the more options on the right top corner of the card.
+  ![deleteOption](https://i.imgur.com/t6r5ulC.png)
+- admin can change the status fo the lead instantly
+  ![Imgur](https://i.imgur.com/Ff9ezEg.png)
+- Onclick on the email will open the form to send mails to the respective clients.
+  ![Imgur](https://i.imgur.com/pr8ng1N.png)
+- With or Without the mail canbe send.
+  ![Imgur](https://i.imgur.com/pqFDxSy.png)
 
 ## Deployment<a name="deployment"></a>
 
