@@ -88,7 +88,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     >
       {/* sidebar */}
       {asideOpen && (
-        <div className=" max-h-[100vh] h-full border-r-2 flex flex-col justify-between gap-2 items-center  p-4">
+        <div className="  max-h-screen h-full border-r-2 flex flex-col justify-between gap-2 items-center  p-4">
           <div className="flex w-full flex-col gap-3">
             <Button
               variant="ghost"
@@ -143,9 +143,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       )}
       {/* main section viweport */}
-      <div className=" relative w-full max-w-full h-screen max-h-[100vh]  p-4">
-        {children}
-      </div>
+      <div className="  w-full max-w-full h-screen   ">{children}</div>
     </div>
   );
 }

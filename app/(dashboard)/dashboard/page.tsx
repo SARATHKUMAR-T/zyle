@@ -43,6 +43,8 @@ import MailerForm from "@/components/mailerForm";
 import axios from "axios";
 import Header from "@/components/Header";
 import OverViewCard from "@/components/OverViewCard";
+import { Skeleton } from "@/components/ui/skeleton";
+import CardSkeleton from "@/components/CardSkeleton";
 
 interface Leads {
   _id: string;
@@ -171,16 +173,17 @@ export default function Dashboard() {
   }
 
   return (
-    <>
+    <div>
       <Header setIsFormOpen={setIsFormOpen} />
-      <main>
+      <main className="overflow-y-auto flex flex-col    h-[90vh] px-8  items-center  pb-28 max-w-full">
         <OverViewCard allLeads={allLeads} />
-        <div className="max-w-full mt-10 overflow-y-auto h-[60vh] pb-28  px-8 flex mx-auto flex-wrap items-center gap-16">
+        <div className="w-full  justify-center lg:justify-start mt-10    flex mx-auto flex-wrap items-center gap-14">
+          {isLoading && <CardSkeleton />}
           {allLeads &&
             allLeads.map((lead, i) => (
               <Card
                 key={i}
-                className="relative flex flex-col justify-between h-[23rem] w-72 "
+                className="relative  flex flex-col justify-between h-[23rem] w-72 "
               >
                 <div className="absolute right-0">
                   <Popover>
@@ -320,6 +323,6 @@ export default function Dashboard() {
       </main>
       {isFormOpen && <CustomerForm setIsFormOpen={setIsFormOpen} />}
       {mailModal && <MailerForm lead={leadMail} setMailModal={setMailModal} />}
-    </>
+    </div>
   );
 }

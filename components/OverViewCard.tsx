@@ -37,9 +37,7 @@ export default function OverViewCard({ allLeads }: { allLeads: any }) {
     },
   ];
   return (
-    <div className="flex flex-wrap gap-3 mt-5 items-center justify-around 2xl:px-16 2xl:gap-12">
-      <div className="max-w-full w-full h-[2px] bg-gray-300 dark:bg-gray-700 mt-3" />
-
+    <div className="flex w-full  flex-wrap   gap-3 mt-5 items-center justify-around 2xl:px-16 2xl:gap-12">
       {cards.map((item, i) => (
         <Card
           key={i}
