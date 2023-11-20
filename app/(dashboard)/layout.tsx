@@ -84,7 +84,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div
       className={`${
         asideOpen ? "grid-cols-[17rem,auto]" : "grid-cols-1"
-      } relative  max-h-screen grid grid-rows-1 overflow-hidden`}
+      } relative  max-h-screen grid grid-rows-1 overflow-hidden bg-slate-100/75 dark:bg-slate-900`}
     >
       {/* sidebar */}
       {asideOpen && (
