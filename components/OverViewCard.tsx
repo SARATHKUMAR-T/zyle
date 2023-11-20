@@ -1,13 +1,7 @@
 "use client";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import {
-  Activity,
-  Shield,
-  ShieldEllipsis,
-  ShieldHalf,
-  XSquare,
-} from "lucide-react";
+import { Activity, Shield, ShieldEllipsis, XSquare } from "lucide-react";
 
 export default function OverViewCard({ allLeads }: { allLeads: any }) {
   const activeCustomers = allLeads?.filter(
@@ -21,17 +15,19 @@ export default function OverViewCard({ allLeads }: { allLeads: any }) {
     {
       title: "Total Customers",
       count: allLeads?.length || 0,
+      color: "bg-gradient-to-r from-[#000428] to-[#004e92] ",
+
       icon: <Activity className="h-8 w-8" />,
     },
     {
       title: "Active Customers",
-      color: "bg-green-400",
+      color: "bg-gradient-to-b from-[#52c234] to-[#061700] ",
       count: activeCustomers?.length || 0,
       icon: <ShieldEllipsis className="h-8 w-8" />,
     },
     {
       title: "Closed Deals",
-      color: "bg-red-400",
+      color: "bg-gradient-to-r from-[#c31432] to-[#240b36] ",
       count: closedCustomers?.length || 0,
       icon: <XSquare className="h-8 w-8" />,
     },
@@ -41,10 +37,10 @@ export default function OverViewCard({ allLeads }: { allLeads: any }) {
       {cards.map((item, i) => (
         <Card
           key={i}
-          className={`${item?.color} min-w-[18rem] 2xl:grow h-24 rounded-sm`}
+          className={`${item?.color} min-w-[18rem] text-white 2xl:grow h-24 rounded-sm`}
         >
           <CardHeader className="p-2">
-            <CardTitle className="text-sm font-normal pl-2 text-muted-foreground">
+            <CardTitle className="text-sm font-normal pl-2 ">
               {item.title}
             </CardTitle>
           </CardHeader>

@@ -23,6 +23,7 @@ import { useDropzone } from "@uploadthing/react/hooks";
 import { generateClientDropzoneAccept } from "uploadthing/client";
 
 import { useUploadThing } from "@/lib/utils";
+import { Badge } from "./ui/badge";
 
 interface UserFile {
   name: string;
@@ -52,6 +53,7 @@ const formSchema = z.object({
 function MailerForm({ lead, setMailModal }: { lead: any; setMailModal: any }) {
   const { toast } = useToast();
   const [userFiles, setUserFiles] = useState<UserFile | null>();
+  console.log(Boolean(userFiles));
   const [isLoading, setIsLoading] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
 
@@ -243,16 +245,19 @@ function MailerForm({ lead, setMailModal }: { lead: any; setMailModal: any }) {
                   </FormItem>
                 )}
               />
+              {!Boolean(userFiles) ? (
+                <Card
+                  className="h-24  flex flex-col items-center justify-center"
+                  {...getRootProps()}
+                >
+                  <Input {...getInputProps()} />
 
-              <Card
-                className="h-24  flex flex-col items-center justify-center"
-                {...getRootProps()}
-              >
-                <Input {...getInputProps()} />
-
-                <UploadCloud className="w-14 h-14  " />
-                <p className="text-sm">Drop Your Files Here</p>
-              </Card>
+                  <UploadCloud className="w-14 h-14  " />
+                  <p className="text-sm">Drop Your Files Here</p>
+                </Card>
+              ) : (
+                <Badge>1 File Uploaded</Badge>
+              )}
               <div>
                 {files.length > 0 && (
                   <Button
