@@ -14,7 +14,7 @@ export default function Home() {
     cleanupfunction();
   }, []);
   return (
-    <main className="min-h-screen  overflow-hidden flex  items-center max-w-full py-12 px-2 md:px-8">
+    <main className="min-h-screen bg-[url('/assets/ftuy4.jpg')]  bg-cover bg-center overflow-hidden flex  items-center max-w-full py-12 px-2 md:px-8">
       <Card className="max-w-6xl w-full  mx-auto  min-h-[80vh] py-6 flex flex-col gap-y-4 items-center md:flex-row ">
         <div className="w-full md:w-1/2 flex px-6 md:px-16  items-center justify-center">
           <Card className="p-8 w-full text-center   bg-[url('/assets/login3.jpg')]   bg-cover bg-center ">
