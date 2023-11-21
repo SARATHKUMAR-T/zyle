@@ -43,7 +43,6 @@ import MailerForm from "@/components/mailerForm";
 import axios from "axios";
 import Header from "@/components/Header";
 import OverViewCard from "@/components/OverViewCard";
-import { Skeleton } from "@/components/ui/skeleton";
 import CardSkeleton from "@/components/CardSkeleton";
 
 interface Leads {
@@ -69,22 +68,12 @@ export default function Dashboard() {
 
   // Route Protection
   useEffect(() => {
-    function checkToken() {
-      if (!localStorage.getItem("token")) {
-        router.push("/");
-      }
+    function routeProtecion() {
+      !localStorage.getItem("token") && router.push("/");
     }
-    checkToken();
+    routeProtecion();
   }, [router]);
 
-  // const token = localStorage.getItem("token");
-  // const headers: HeadersInit = {
-  //   "Content-Type": "application/json",
-  // };
-
-  // if (token) {
-  //   headers["x-auth-token"] = token;
-  // }
   // fetching data from the server
   const { data, isLoading } = useQuery({
     queryKey: ["getLeads"],
